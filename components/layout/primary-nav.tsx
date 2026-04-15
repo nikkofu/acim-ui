@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { cn } from "@/lib/utils"
 import { useWorkspaceStore } from "@/stores/workspace-store"
+import { useUIStore } from "@/stores/ui-store"
 
 const NAV_ITEMS = [
   { icon: Home, label: "Home", active: true },
@@ -17,6 +18,7 @@ const NAV_ITEMS = [
 
 export function PrimaryNav() {
   const { workspaces, currentWorkspace } = useWorkspaceStore()
+  const { toggleAIPanel, isAIPanelOpen } = useUIStore()
 
   return (
     <aside className="w-[60px] bg-[#3f0e40] dark:bg-[#1a1d21] flex flex-col items-center py-3 gap-4 border-r border-white/10 shrink-0">
@@ -68,9 +70,13 @@ export function PrimaryNav() {
             <Button
               variant="ghost"
               size="icon"
-              className="w-9 h-9 rounded-lg text-white/70 hover:bg-white/10 hover:text-white transition-colors"
+              className={cn(
+                "w-9 h-9 rounded-lg text-white/70 hover:bg-white/10 hover:text-white transition-colors",
+                isAIPanelOpen && "bg-white/10 text-white ring-1 ring-purple-400/50"
+              )}
+              onClick={toggleAIPanel}
             >
-              <Sparkles className="w-5 h-5 text-purple-400" />
+              <Sparkles className={cn("w-5 h-5", isAIPanelOpen ? "text-purple-300" : "text-purple-400")} />
             </Button>
           </TooltipTrigger>
           <TooltipContent side="right">
