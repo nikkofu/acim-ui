@@ -41,6 +41,10 @@ export function MessageComposer({ placeholder, onSend }: MessageComposerProps) {
       e.preventDefault()
       handleSend()
     }
+    if (e.key === 'ArrowUp' && content === "") {
+      console.log("Slack feature: Edit last message triggered")
+      // In a real app, we would set the content to the last message and enter edit mode
+    }
     if (e.key === 'Escape') {
       setShowSlashCommands(false)
     }
@@ -144,7 +148,7 @@ export function MessageComposer({ placeholder, onSend }: MessageComposerProps) {
   )
 }
 
-function ToolbarButton({ icon: Icon, tooltip, active }: { icon: any, tooltip: string, active?: boolean }) {
+function ToolbarButton({ icon: Icon, tooltip, active }: { icon: React.ElementType, tooltip: string, active?: boolean }) {
   return (
     <Tooltip>
       <TooltipTrigger asChild>

@@ -58,7 +58,7 @@ export function AIMessageItem({ message }: { message: AIMessage }) {
   )
 }
 
-function ActionButton({ icon: Icon, tooltip }: { icon: any, tooltip: string }) {
+function ActionButton({ icon: Icon, tooltip }: { icon: React.ElementType, tooltip: string }) {
   return (
     <Button 
       variant="ghost" 

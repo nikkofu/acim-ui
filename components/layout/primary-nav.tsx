@@ -19,7 +19,7 @@ const NAV_ITEMS = [
 ]
 
 export function PrimaryNav() {
-  const { workspaces, currentWorkspace } = useWorkspaceStore()
+  const { currentWorkspace } = useWorkspaceStore()
   const { toggleAIPanel, isAIPanelOpen } = useUIStore()
   const pathname = usePathname()
 

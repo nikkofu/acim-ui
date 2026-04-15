@@ -1,11 +1,8 @@
 "use client"
 
 import { useChannelStore } from "@/stores/channel-store"
-import { useMessageStore } from "@/stores/message-store"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { Hash, Lock, Info, Phone, Video, Search, Star, MoreVertical } from "lucide-react"
+import { Hash, Lock, Info, Phone, Video, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { MessageComposer } from "@/components/message/message-composer"
 
 export function MessageArea({ children }: { children?: React.ReactNode }) {

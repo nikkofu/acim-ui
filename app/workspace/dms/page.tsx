@@ -1,6 +1,6 @@
 "use client"
 
-import { MessageSquare, Search } from "lucide-react"
+import { Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { USERS } from "@/lib/mock-data"

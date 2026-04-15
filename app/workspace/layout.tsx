@@ -7,14 +7,26 @@ import { AIChatPanel } from "@/components/ai-chat/ai-chat-panel"
 import { SearchDialog } from "@/components/search/search-dialog"
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable"
 import { useUIStore } from "@/stores/ui-store"
+import { useEffect } from "react"
 
 export default function WorkspaceLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const { isThreadOpen, isAIPanelOpen } = useUIStore()
+  const { isThreadOpen, isAIPanelOpen, closeThread, closeAIPanel } = useUIStore()
   const showRightPanel = isThreadOpen || isAIPanelOpen
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        if (isAIPanelOpen) closeAIPanel()
+        if (isThreadOpen) closeThread()
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [isAIPanelOpen, isThreadOpen, closeAIPanel, closeThread])
 
   return (
     <div className="flex h-screen w-full overflow-hidden bg-[#3f0e40] dark:bg-[#1a1d21]">

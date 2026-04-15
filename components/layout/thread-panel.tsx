@@ -15,7 +15,7 @@ export function ThreadPanel() {
   const Icon = currentChannel?.type === "private" ? Lock : Hash
 
   return (
-    <div className="w-full h-full flex flex-col bg-white dark:bg-[#1a1d21] border-l">
+    <div className="w-full h-full flex flex-col bg-white dark:bg-[#1a1d21] border-l animate-in slide-in-from-right duration-300">
       <header className="h-14 px-4 flex items-center justify-between border-b shrink-0">
         <div className="flex flex-col">
           <h3 className="font-bold">Thread</h3>

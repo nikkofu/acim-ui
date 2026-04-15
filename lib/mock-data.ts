@@ -1,4 +1,4 @@
-import { User, Workspace, Channel, Message, MessageAttachment } from "@/types"
+import { User, Workspace, Channel, Message } from "@/types"
 
 export const USERS: User[] = [
   {

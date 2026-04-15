@@ -36,9 +36,11 @@
 
 
 ## Phase 4: 高级功能
-- [ ] 全局搜索 (search-dialog.tsx)
-- [ ] Huddle 状态栏 (huddle-bar.tsx)
-- [ ] DMs / Activity / Later 视图页面
+- [x] 全局搜索 (search-dialog.tsx)
+- [x] Huddle 状态栏 (huddle-bar.tsx)
+- [x] DMs / Activity / Later 视图页面
+- [x] 路由导航集成
+
 
 ## Phase 5: 主题 & 打磨
 - [ ] Slack 深色主题定制

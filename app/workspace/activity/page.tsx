@@ -1,6 +1,6 @@
 "use client"
 
-import { Bell, AtSign, ThumbsUp, MessageSquare } from "lucide-react"
+import { AtSign, ThumbsUp, MessageSquare } from "lucide-react"
 import { ScrollArea } from "@/components/ui/scroll-area"
 
 export default function ActivityPage() {

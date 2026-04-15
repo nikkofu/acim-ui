@@ -3,7 +3,7 @@
 import { useEffect } from "react"
 import { useUIStore } from "@/stores/ui-store"
 import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command"
-import { Search, Sparkles, Hash, User, FileText, Clock } from "lucide-react"
+import { Sparkles, Hash, User, Clock } from "lucide-react"
 
 export function SearchDialog() {
   const { isSearchOpen, toggleSearch, closeSearch } = useUIStore()
@@ -42,11 +42,11 @@ export function SearchDialog() {
         <CommandGroup heading="AI Semantic Suggestions">
           <CommandItem className="cursor-pointer">
             <Sparkles className="mr-2 h-4 w-4 text-purple-500" />
-            <span>Find messages related to "project timeline"</span>
+            <span>Find messages related to &quot;project timeline&quot;</span>
           </CommandItem>
           <CommandItem className="cursor-pointer">
             <Sparkles className="mr-2 h-4 w-4 text-purple-500" />
-            <span>Show me all files about "UI design"</span>
+            <span>Show me all files about &quot;UI design&quot;</span>
           </CommandItem>
         </CommandGroup>
 

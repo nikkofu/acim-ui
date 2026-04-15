@@ -1,6 +1,6 @@
 "use client"
 
-import { Hash, Lock, ChevronDown, Plus, Search, Star, MessageSquare, Sparkles } from "lucide-react"
+import { Hash, Lock, ChevronDown, Plus, Search, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
@@ -127,7 +127,14 @@ export function ChannelSidebar() {
   )
 }
 
-function SidebarItem({ channel, isActive, onClick }: { channel: any, isActive: boolean, onClick: () => void }) {
+interface SidebarChannel {
+  name: string
+  type: string
+  unreadCount?: number
+  id: string
+}
+
+function SidebarItem({ channel, isActive, onClick }: { channel: SidebarChannel, isActive: boolean, onClick: () => void }) {
   const Icon = channel.type === "private" ? Lock : Hash
 
   return (
@@ -142,11 +149,11 @@ function SidebarItem({ channel, isActive, onClick }: { channel: any, isActive: b
       <span className={cn("flex-1 truncate font-medium", channel.unreadCount && "font-bold text-white")}>
         {channel.name}
       </span>
-      {channel.unreadCount > 0 && (
+      {channel.unreadCount && channel.unreadCount > 0 ? (
         <Badge className="bg-[#e01e5a] text-white hover:bg-[#e01e5a] h-5 px-1.5 min-w-5 justify-center border-none text-[10px]">
           {channel.unreadCount}
         </Badge>
-      )}
+      ) : null}
     </div>
   )
 }

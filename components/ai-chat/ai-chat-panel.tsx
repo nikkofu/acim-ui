@@ -10,7 +10,7 @@ import { useUIStore } from "@/stores/ui-store"
 import { useEffect, useRef } from "react"
 
 export function AIChatPanel() {
-  const { messages, append, isLoading } = useAIChat()
+  const { messages, append } = useAIChat()
   const { isAIPanelOpen, closeAIPanel } = useUIStore()
   const scrollRef = useRef<HTMLDivElement>(null)
 
@@ -63,9 +63,9 @@ export function AIChatPanel() {
                 </div>
               </div>
               <div className="max-w-[240px]">
-                <h4 className="font-bold text-lg mb-2">I'm your AI sidekick</h4>
+                <h4 className="font-bold text-lg mb-2">I&apos;m your AI sidekick</h4>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Ask me to summarize channels, help with code, or draft messages. I'm here to make you faster.
+                  Ask me to summarize channels, help with code, or draft messages. I&apos;m here to make you faster.
                 </p>
               </div>
               <div className="grid grid-cols-1 gap-2 w-full mt-4">

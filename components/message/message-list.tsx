@@ -1,10 +1,10 @@
 "use client"
 
-import { Message, User } from "@/types"
+import { Message } from "@/types"
 import { MessageItem } from "./message-item"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { USERS } from "@/lib/mock-data"
-import { format, isSameDay, isSameMinute } from "date-fns"
+import { format, isSameDay } from "date-fns"
 import { useEffect, useRef } from "react"
 
 interface MessageListProps {

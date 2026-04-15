@@ -2,7 +2,7 @@
 
 import { Message, User } from "@/types"
 import { UserAvatar } from "@/components/common/user-avatar"
-import { format, isSameMinute } from "date-fns"
+import { format } from "date-fns"
 import { cn } from "@/lib/utils"
 import { MessageActions } from "./message-actions"
 import { EmojiReaction } from "./emoji-reaction"
