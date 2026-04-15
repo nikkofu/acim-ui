@@ -7,21 +7,24 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { cn } from "@/lib/utils"
 import { useWorkspaceStore } from "@/stores/workspace-store"
 import { useUIStore } from "@/stores/ui-store"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 const NAV_ITEMS = [
-  { icon: Home, label: "Home", active: true },
-  { icon: MessageSquare, label: "DMs", count: 2 },
-  { icon: Bell, label: "Activity" },
-  { icon: Bookmark, label: "Later" },
-  { icon: MoreHorizontal, label: "More" },
+  { icon: Home, label: "Home", href: "/workspace" },
+  { icon: MessageSquare, label: "DMs", href: "/workspace/dms", count: 2 },
+  { icon: Bell, label: "Activity", href: "/workspace/activity" },
+  { icon: Bookmark, label: "Later", href: "/workspace/later" },
+  { icon: MoreHorizontal, label: "More", href: "#" },
 ]
 
 export function PrimaryNav() {
   const { workspaces, currentWorkspace } = useWorkspaceStore()
   const { toggleAIPanel, isAIPanelOpen } = useUIStore()
+  const pathname = usePathname()
 
   return (
-    <aside className="w-[60px] bg-[#3f0e40] dark:bg-[#1a1d21] flex flex-col items-center py-3 gap-4 border-r border-white/10 shrink-0">
+    <aside className="w-[60px] bg-[#3f0e40] dark:bg-[#1a1d21] flex flex-col items-center py-3 gap-4 border-r border-white/10 shrink-0 relative z-20">
       {/* Workspace Switcher Button */}
       <Tooltip>
         <TooltipTrigger asChild>
@@ -37,30 +40,35 @@ export function PrimaryNav() {
       </Tooltip>
 
       <div className="flex flex-col gap-1 w-full items-center">
-        {NAV_ITEMS.map((item, idx) => (
-          <Tooltip key={idx}>
-            <TooltipTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className={cn(
-                  "w-9 h-9 rounded-lg text-white/70 hover:bg-white/10 hover:text-white transition-colors relative",
-                  item.active && "bg-white/10 text-white"
-                )}
-              >
-                <item.icon className="w-5 h-5" />
-                {item.count && (
-                  <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#e01e5a] text-white text-[10px] rounded-full flex items-center justify-center border-2 border-[#3f0e40] dark:border-[#1a1d21]">
-                    {item.count}
-                  </span>
-                )}
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent side="right">
-              <p>{item.label}</p>
-            </TooltipContent>
-          </Tooltip>
-        ))}
+        {NAV_ITEMS.map((item, idx) => {
+          const isActive = pathname === item.href
+          return (
+            <Tooltip key={idx}>
+              <TooltipTrigger asChild>
+                <Link href={item.href}>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className={cn(
+                      "w-9 h-9 rounded-lg text-white/70 hover:bg-white/10 hover:text-white transition-colors relative",
+                      isActive && "bg-white/10 text-white"
+                    )}
+                  >
+                    <item.icon className="w-5 h-5" />
+                    {item.count && (
+                      <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#e01e5a] text-white text-[10px] rounded-full flex items-center justify-center border-2 border-[#3f0e40] dark:border-[#1a1d21]">
+                        {item.count}
+                      </span>
+                    )}
+                  </Button>
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent side="right">
+                <p>{item.label}</p>
+              </TooltipContent>
+            </Tooltip>
+          )
+        })}
       </div>
 
       <div className="mt-auto flex flex-col gap-4 items-center">

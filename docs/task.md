@@ -19,19 +19,21 @@
 
 
 ## Phase 2: 消息系统 & 交互
-- [ ] 消息项组件 (message-item.tsx)
-- [ ] 消息列表 (message-list.tsx)
-- [ ] 消息编辑器 (message-composer.tsx)
-- [ ] 消息操作栏 (message-actions.tsx)
-- [ ] Emoji 反应 (emoji-reaction.tsx)
-- [ ] 频道头部 (channel-header.tsx)
+- [x] 消息项组件 (message-item.tsx)
+- [x] 消息列表 (message-list.tsx)
+- [x] 消息编辑器 (message-composer.tsx)
+- [x] 消息操作栏 (message-actions.tsx)
+- [x] Emoji 反应 (emoji-reaction.tsx)
+- [x] 频道头部 (channel-header.tsx) (集成在 message-area.tsx)
+
 
 ## Phase 3: AI-Native 能力集成
-- [ ] AI 对话面板 (ai-chat-panel.tsx)
-- [ ] AI Slash Commands (ai-slash-command.tsx)
-- [ ] @Mention 弹出 (mention-popover.tsx)
-- [ ] AI 对话 Hook (use-ai-chat.ts)
-- [ ] AI 线程摘要 (ai-thread-summary.tsx)
+- [x] AI 对话面板 (ai-chat-panel.tsx)
+- [x] AI Slash Commands (ai-slash-command.tsx)
+- [x] @Mention 弹出 (mention-popover.tsx) (集成在 AI 命令中)
+- [x] AI 对话 Hook (use-ai-chat.ts)
+- [x] AI 思考展示 (ai-reasoning.tsx)
+
 
 ## Phase 4: 高级功能
 - [ ] 全局搜索 (search-dialog.tsx)

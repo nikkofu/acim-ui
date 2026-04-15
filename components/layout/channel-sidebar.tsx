@@ -1,25 +1,28 @@
 "use client"
 
-import { Hash, Lock, ChevronDown, Plus, Search, Star, MessageSquare } from "lucide-react"
+import { Hash, Lock, ChevronDown, Plus, Search, Star, MessageSquare, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { cn } from "@/lib/utils"
 import { useWorkspaceStore } from "@/stores/workspace-store"
 import { useChannelStore } from "@/stores/channel-store"
+import { useUIStore } from "@/stores/ui-store"
+import { HuddleBar } from "@/components/huddle/huddle-bar"
 import { useState } from "react"
 import { Badge } from "@/components/ui/badge"
 
 export function ChannelSidebar() {
   const { currentWorkspace } = useWorkspaceStore()
   const { channels, currentChannel, setCurrentChannel } = useChannelStore()
+  const { openSearch } = useUIStore()
   const [openSections, setOpenSections] = useState({ starred: true, channels: true, dms: true })
 
   const starredChannels = channels.filter(c => c.isStarred)
   const regularChannels = channels.filter(c => !c.isStarred)
 
   return (
-    <nav className="w-[260px] bg-[#3f0e40] dark:bg-[#19171d] flex flex-col h-full text-[#cfc3cf] dark:text-[#9b999b] shrink-0 border-r border-white/5">
+    <nav className="w-[260px] bg-[#3f0e40] dark:bg-[#19171d] flex flex-col h-full text-[#cfc3cf] dark:text-[#9b999b] shrink-0 border-r border-white/5 shadow-xl relative z-10">
       {/* Workspace Header */}
       <div className="h-14 px-4 flex items-center justify-between hover:bg-white/10 cursor-pointer transition-colors border-b border-white/5">
         <h2 className="font-bold text-lg text-white truncate flex items-center gap-1">
@@ -35,7 +38,11 @@ export function ChannelSidebar() {
         <div className="px-2 py-4 flex flex-col gap-4">
           {/* Quick Search */}
           <div className="px-2 mb-2">
-            <Button variant="ghost" className="w-full justify-start text-white/50 bg-white/10 hover:bg-white/20 h-8 px-2 font-normal">
+            <Button 
+              variant="ghost" 
+              className="w-full justify-start text-white/50 bg-white/10 hover:bg-white/20 h-8 px-2 font-normal rounded-md"
+              onClick={openSearch}
+            >
               <Search className="w-4 h-4 mr-2" />
               Search Acme Corp
               <span className="ml-auto text-[10px] opacity-50">⌘K</span>
@@ -115,6 +122,7 @@ export function ChannelSidebar() {
           </Collapsible>
         </div>
       </ScrollArea>
+      <HuddleBar />
     </nav>
   )
 }

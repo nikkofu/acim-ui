@@ -2,9 +2,9 @@
 
 import { PrimaryNav } from "@/components/layout/primary-nav"
 import { ChannelSidebar } from "@/components/layout/channel-sidebar"
-import { MessageArea } from "@/components/layout/message-area"
 import { ThreadPanel } from "@/components/layout/thread-panel"
 import { AIChatPanel } from "@/components/ai-chat/ai-chat-panel"
+import { SearchDialog } from "@/components/search/search-dialog"
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable"
 import { useUIStore } from "@/stores/ui-store"
 
@@ -23,7 +23,7 @@ export default function WorkspaceLayout({
         <ChannelSidebar />
         <ResizablePanelGroup direction="horizontal" className="flex-1">
           <ResizablePanel defaultSize={showRightPanel ? 65 : 100} minSize={30}>
-            <MessageArea>{children}</MessageArea>
+            {children}
           </ResizablePanel>
           
           {showRightPanel && (
@@ -37,6 +37,7 @@ export default function WorkspaceLayout({
           )}
         </ResizablePanelGroup>
       </div>
+      <SearchDialog />
     </div>
   )
 }
