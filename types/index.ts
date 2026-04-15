@@ -79,11 +79,11 @@ export interface AIChat {
 
 export interface AIMessage {
   id: string
-  role: "user" | "assistant" | "system" | "data"
+  role: "user" | "assistant" | "system"
   content: string
   createdAt: string
   isStreaming?: boolean
-  reasoning?: string
+  reasoning?: string // 思考过程
   tools?: {
     name: string
     args: any
